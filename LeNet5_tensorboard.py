@@ -150,7 +150,7 @@ def train(input_data):
         # 为了一次完成多个操作,tf.control_dependencies与tf.group两种机制是一样的。
         with tf.control_dependencies([train_step,variables_averages_op]):
             train_op=tf.no_op('train')
-    merged=tf.summary.merge_all() #将所有摘要合并，并写到日志里面
+    merged=tf.summary.merge_all() #将所有摘要合并，并写到日志里面,自动化配置功能。
     #初始化Tensoflow持久化类
     saver =tf.train.Saver()
     
