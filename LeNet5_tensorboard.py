@@ -155,10 +155,10 @@ def train(input_data):
     saver =tf.train.Saver()
     
     with tf.Session() as sess:
-        #出事化写日志的writer，并将当前tensorflow写入日志  
+        #初始化写日志的writer，并将当前tensorflow写入日志  
         #在tf.summary.FileWriter(logdir,tf.get_default_graph())或写成
-        #tf.summary.FileWriter（logdir, sess.graph）,第一种是可以卸载任何一种里面的
-        #第二种是一般卸载sess中的。
+        #tf.summary.FileWriter（logdir, sess.graph）,第一种是可以写在任何一种里面的
+        #第二种是一般写在sess中的。
         train_writer=tf.summary.FileWriter('./MNIST_data/tensorboard/log/train',sess.graph)
         tf.global_variables_initializer().run()
         for epoch in range (NUM_EPOCHES):
