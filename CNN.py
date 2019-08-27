@@ -13,13 +13,16 @@ from numpy.random import RandomState
 BATCH_SIZE = 8
 LEARNING_RATE = 1e-3
 EPOCHES = 5000
-w1 = tf.Variable(tf.random_normal([2,3],seed=1,stddev=1))
+w1 = tf.Variable(tf.random_normal([2,3],seed=1,stddev=1)) # 创建变量 ，定义神经网络参数
 w2 = tf.Variable(tf.random_normal([3,1],seed=1,stddev=1))
-x = tf.placeholder(tf.float32,shape=[None,2],name='x_input')
+x = tf.placeholder(tf.float32,shape=[None,2],name='x_input')   # 占位符
 y_ = tf.placeholder(tf.float32,shape=[None,1],name='y_input')
 
-a = tf.matmul(x,w1)
+a = tf.matmul(x,w1)     # 定义前向传播过程
 y = tf.matmul(a,w2)
+
+y = tf.sigmoid(y)   # 定义损失函数与反向传播的算法
+
 cross_entropy = -tf.reduce_mean(y_*tf.log(tf.clip_by_value(y , 1e-10 , 1.0)))
 train_step = tf.train.AdamOptimizer(LEARNING_RATE).minimize(cross_entropy)
 
