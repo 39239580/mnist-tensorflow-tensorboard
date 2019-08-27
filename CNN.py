@@ -40,8 +40,8 @@ with tf.Session() as sess:
         end=min(start+BATCH_SIZE,dataset_size)
         sess.run(train_step, feed_dict = {x: X[start : end], y_: Y[start : end]})
         if epoch %1000==0:
-            total_cross_entrpy=sess.run(cross_entropy , feed_dict={x : X , y_ : Y})
-            print("After %d training step(s),cross entropy on all data is %g"%(epoch,total_cross_entrpy))
+            total_cross_entropy=sess.run(cross_entropy , feed_dict={x : X , y_ : Y})
+            print("After %d training step(s),cross entropy on all data is %g"%(epoch,total_cross_entropy))
 
     print(sess.run(w1))
     print(sess.run(w2))
